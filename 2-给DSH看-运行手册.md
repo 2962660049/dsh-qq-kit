@@ -33,7 +33,7 @@
 | 步 | 用户做的事 | 是否可被 AI 替代 |
 |---|---|---|
 | 1 | 桌面 QQ **只登小号**（扫码） | ❌ 必须人工 |
-| 2 | 解压 `scripts\installer\SnowLuma-v1.14.20-win-x64.zip` 到 `D:\SnowLuma`；双击 `launcher.bat`；浏览器里改 WebUI 密码 | 解压/启动可代做；**扫码与改密必须人工** |
+| 2 | 打开 `scripts\installer\snowluma下载网站.txt` 里的网址下载 zip → 解压到 `D:\SnowLuma`；双击 `launcher.bat`；浏览器里改 WebUI 密码 | 解压/启动可代做；**扫码与改密必须人工** |
 | 3 | 双击 `scripts\installer\安装qq-bridge.bat`，遇到 Y/N 答 Y，记事本里填号 | 可代做，但用户双击更省事 |
 | 4 | 双击 `scripts\一键部署.bat` | 可代做（内容见 S7） |
 | 5 | 把上面那段提示词发给你 | — |
@@ -105,7 +105,7 @@ Get-ChildItem D:\SnowLuma -Force | Select-Object Name
 ```
 <kit>\
   scripts\
-    installer\     安装qq-bridge.bat / install-node.ps1 / SnowLuma-v1.14.20-win-x64.zip / 说明.txt
+    installer\     安装qq-bridge.bat / install-node.ps1 / snowluma下载网站.txt / 说明.txt
     启动.bat 一键部署.bat sync-dsh-port.mjs watch-dsh-port.mjs fix-preset-cwd.mjs
     reference\     桥接原生 start.bat（内部零件，不要单独双击）
   extras\  diary\（日记工具，需自填 API key）、phone-mcp\（安卓手机 MCP，需 ADB）
@@ -117,12 +117,12 @@ Get-ChildItem D:\SnowLuma -Force | Select-Object Name
 
 ```powershell
 Get-ChildItem D:\SnowLuma -Force | Select-Object Name
-(Get-Item 'D:\SnowLuma\SnowLuma-v1.14.20-win-x64.zip' -ErrorAction SilentlyContinue)
+Get-ChildItem C:\Users\sun\Downloads,'D:\SnowLuma' -Filter 'SnowLuma-*.zip' -ErrorAction SilentlyContinue | Select-Object FullName,Length
 ```
 
 通过判据：`D:\SnowLuma` 下**直接**看到 `launcher.bat`、`node.exe`、`native\`（`config\` 是首次启动后生成的，此时可以没有）。若只看到一个 `SnowLuma-v1.14.20-win-x64\` 子目录 → 把里面内容上提到根目录。
 
-版本必须是 **1.14.20**；若用户下成 2.x，用包内自带 zip 重新解压（`scripts\installer\SnowLuma-v1.14.20-win-x64.zip`，sha256 `0ca7bd4a…`）。
+版本必须是 **1.14.20**；若用户下成 2.x，让他按 `scripts\installer\snowluma下载网站.txt` 里的网址重下（36.09 MB，sha256 `0ca7bd4a…`）。
 
 ### S3 · 打开自动注入（`hookAutoLoad`）
 

@@ -1,13 +1,15 @@
-这个文件夹负责「把软件装到电脑上」，一共三样东西：
+这个文件夹负责「把软件装到电脑上」，一共这几样：
 
   安装qq-bridge.bat              ← 装 qq-bridge，只双击这一个
   install-node.ps1               ← 不用管、不用双击；上面那个发现电脑没 Node.js 时会自己调它
-  SnowLuma-v1.14.20-win-x64.zip  ← SnowLuma 本体，包里自带，右键解压就能用
+  snowluma下载网站.txt            ← SnowLuma 本体的官方下载地址，用浏览器打开它
 
 
-【一、先解压 SnowLuma】
+【一、先下载并解压 SnowLuma】
 
-右键 SnowLuma-v1.14.20-win-x64.zip → 解压到 D:\SnowLuma
+用浏览器打开本文件夹里的 snowluma下载网站.txt，把那一行网址复制到地址栏下载
+（约 36 MB，下完在「下载」文件夹里）。
+然后右键那个 zip → 解压到 D:\SnowLuma
 
 要点：
   · 路径纯英文，不能有中文、不能有空格
