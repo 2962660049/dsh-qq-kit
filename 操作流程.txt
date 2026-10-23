@@ -1,0 +1,27 @@
+1：电脑桌面端QQ，QQ小号扫码登录。（不要登大号）
+
+2：打开安装包：脚本/安装器
+解压snowluma的压缩包到D盘D:\SnowLuma，路径必须全是英文，不能带中文或空格。
+不要多套一层文件夹。
+打开 D:\SnowLuma 后应当直接看到 launcher.bat、node.exe、config\、native\ 这些东西。
+如果里面还有一个 SnowLuma-v1.14.20-win-x64 文件夹，就把里面的文件全选剪切出来，放到 D:\SnowLuma 根目录。
+
+双击D:\SnowLuma /launcher.bat，自动打开浏览器内的snowluma控制台，更新密码并保存
+
+3：安装qq-bridge.bat
+会自动下载需要的内容，下载到D:\qq-bridge,cmd黑框里回车确认即可，看黑框内有没有Y/N，回答Y继续即可。
+
+4：双击脚本中的一键部署等待完成
+
+5：给dsh提示词：阅读工作区内dsh-QQ-chat安装包内文档，自动更新:和D:\SnowLuma中的程序。我的大号QQ号：，小号QQ号：。
+
+提示词里给上QQ号就好了
+运行之后，这一步会向你索要权限，直接提供即可。
+
+后续使用
+1：扫码登录小号
+2：先双击D:\SnowLuma /launcher.bat
+3：再启动D:\qq-bridge/启动.bat
+等待后即可给QQ小号发消息。
+
+如果有报错的地方，或者给小号发消息后没有回复，让DSH自行检查即可。

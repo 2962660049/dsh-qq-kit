@@ -1,0 +1,62 @@
+这个文件夹负责「把软件装到电脑上」，一共三样东西：
+
+  安装qq-bridge.bat              ← 装 qq-bridge，只双击这一个
+  install-node.ps1               ← 不用管、不用双击；上面那个发现电脑没 Node.js 时会自己调它
+  SnowLuma-v1.14.20-win-x64.zip  ← SnowLuma 本体，包里自带，右键解压就能用
+
+
+【一、先解压 SnowLuma】
+
+右键 SnowLuma-v1.14.20-win-x64.zip → 解压到 D:\SnowLuma
+
+要点：
+  · 路径纯英文，不能有中文、不能有空格
+  · 不要多套一层文件夹：打开 D:\SnowLuma 后应该直接看到
+      launcher.bat   node.exe   native\   index.mjs
+    （config\ 是第一次启动后自动生成的，解压时没有是正常的）
+  · 解压完先别启动，看下一步
+
+
+【二、打开自动注入】
+
+记事本打开 D:\SnowLuma\config\runtime.json —— 还没启动过的话这个文件可能不存在，
+那就先双击 D:\SnowLuma\launcher.bat 启动一次、看到黑窗口出现 listening 后关掉，
+config\ 就有了，再改。
+
+把这行
+  "hookAutoLoad": false
+改成
+  "hookAutoLoad": true
+
+作用：让 SnowLuma 启动时自动挂到 QQ 进程上，不用每次去网页里点「加载/注入」。
+
+
+【三、双击 安装qq-bridge.bat】
+
+双击之后会发生什么：
+  1. 问装到哪个文件夹 → 直接回车（= D:\qq-bridge）
+  2. 查 Node.js：有就跳过；没有就自动下便携版（约 30MB，不写注册表、不改系统变量）
+  3. 下 qq-bridge → 装依赖（npm install，最慢，三五分钟，别关窗口）
+  4. 生成 config.json → 弹记事本让你填值
+
+记事本里要填的（它说"三个值"，其实只有两个要你填）：
+  ownerQQ         → 你自己的 QQ 号
+  allow.private   → 你自己的号 + 小号（她）的号，两个数字
+  snowluma.accessToken → **留空，不用填**
+      桥接启动时会自己去 D:\SnowLuma\config\onebot_<小号QQ>.json
+      读出 token 并写回 config.json（日志会打 "SnowLuma HTTP token 已更新"）。
+      手动填最容易错：HTTP(3000) 和 WS(3001) 是两个不同的 token。
+
+填完按 Ctrl+S 保存 → 关掉记事本 → 回黑窗口按任意键。
+
+它跑完最后会说「双击这个文件夹里的 启动.bat」—— 不要照做。
+正确顺序是：
+
+  1. 本文件（安装qq-bridge.bat）      ← 装 qq-bridge 本体
+  2. 上一层目录的 一键部署.bat         ← 把优化过的启动脚本放进 qq-bridge
+  3. 上层目录的 启动.bat               ← 日常启动，只双击这个
+
+已经有 D:\qq-bridge（里面能看到 src\bridge.js 和 node_modules）就不需要再跑本文件，
+直接从第 2 步开始。
+
+想重来：把 qq-bridge 文件夹整个删掉，再双击本文件。
